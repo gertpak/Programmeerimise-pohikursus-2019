@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sisesta tekst</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = showAnswer;
+            
+            function answer(){
+                let txt = document.getElementById("box").value;
+                let aadress="/answer?txt=" + txt;
+                xhr.open("GET",aadress,true);
+                xhr.send();
+            
+            }
+            function showAnswer(){
+                if(xhr.readyState==4){
+                document.getElementById("answer1").innerHTML= "Tekst: " + xhr.responseText;
+                }
+            
+            }
+        </script>
+    </head>
+    <body>
+        <textarea id="box" rows="10" cols="30">Testime asju!</textarea> <br>
+        <input type="button" value="Saada vastus!" onclick="answer()" /> <br>
+        <span id="answer1"></span>
+        
+        
+    </body>
+</html>
